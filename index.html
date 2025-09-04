@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Nia Williams Portfolio</title>
+    <title>Nia Williams Portfolio</title>
     <!-- Use Tailwind CSS for a sleek and modern design -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -24,6 +24,47 @@
             color: #d1d5db; /* A lighter gray for the active link */
             border-bottom: 2px solid #d1d5db;
         }
+
+        /* Masonry-like grid styling for the gallery */
+        /* This creates a fluid, responsive layout that handles images of different sizes gracefully */
+        .gallery-grid {
+            column-count: 1;
+            column-gap: 1.5rem;
+        }
+        @media (min-width: 640px) { /* sm */
+            .gallery-grid {
+                column-count: 2;
+            }
+        }
+        @media (min-width: 768px) { /* md */
+            .gallery-grid {
+                column-count: 3;
+            }
+        }
+        @media (min-width: 1024px) { /* lg */
+            .gallery-grid {
+                column-count: 4;
+            }
+        }
+        /* Style to prevent breaks inside grid items */
+        .gallery-item {
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+        /* Style for the confirmation message box */
+        .message-box {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            background-color: #1f2937;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-200">
@@ -32,15 +73,16 @@
     <header class="bg-gray-950 shadow-lg sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex flex-col sm:flex-row justify-between items-center">
             <!-- Site Title/Logo -->
-            <a href="#" class="text-xl md:text-2xl font-bold text-gray-100 mb-4 sm:mb-0">
-                Nia Williams Portfolio
+            <a href="#" class="flex flex-col items-center sm:block mb-4 sm:mb-0">
+                <h1 class="text-xl md:text-2xl font-bold text-gray-100">Nia Williams Portfolio</h1>
             </a>
 
             <!-- Navigation Links -->
             <nav class="flex space-x-4 md:space-x-8">
                 <a href="#home" data-page="home" class="nav-link transition-all font-medium text-gray-400 hover:text-gray-100 pb-1 border-b-2 border-transparent">Home</a>
-                <a href="#illustration" data-page="illustration" class="nav-link transition-all font-medium text-gray-400 hover:text-gray-100 pb-1 border-b-2 border-transparent">Illustration</a>
                 <a href="#media" data-page="media" class="nav-link transition-all font-medium text-gray-400 hover:text-gray-100 pb-1 border-b-2 border-transparent">Media</a>
+                <a href="#illustration" data-page="illustration" class="nav-link transition-all font-medium text-gray-400 hover:text-gray-100 pb-1 border-b-2 border-transparent">Illustration</a>
+                <a href="#about" data-page="about" class="nav-link transition-all font-medium text-gray-400 hover:text-gray-100 pb-1 border-b-2 border-transparent">About</a>
                 <a href="#contact" data-page="contact" class="nav-link transition-all font-medium text-gray-400 hover:text-gray-100 pb-1 border-b-2 border-transparent">Contact</a>
             </nav>
         </div>
@@ -53,7 +95,7 @@
             <!-- Container with relative positioning for the image and text overlay -->
             <div class="relative min-h-[calc(100vh-16rem)] flex items-center justify-center">
                 <!-- Background Image, positioned to cover the container -->
-                <img src="https://placehold.co/1920x1080/1f2937/d1d5db?text=Your+Epic+Hero+Image" alt="An epic hero image for the home page" class="absolute inset-0 w-full h-full object-cover">
+                <img src="https://picturef64.github.io/websitephoto/IMG_9690.jpg" alt="An epic hero image for the home page" class="absolute inset-0 w-full h-full object-cover">
                 
                 <!-- Dark gradient overlay to improve text readability -->
                 <div class="absolute inset-0 bg-gray-900 opacity-60"></div>
@@ -61,60 +103,76 @@
                 <!-- Text and Button Overlay, centered and on top of the image -->
                 <div class="relative z-10 text-center p-8">
                     <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4 drop-shadow-lg">
-                        Capturing Moments. <br>Crafting Stories.
+                        Styling the Frame. <br>Illustrating the Moment.
                     </h1>
                     <p class="text-lg md:text-xl text-gray-200 max-w-xl mx-auto mb-8 drop-shadow-md">
-                        Welcome to my portfolio, where every photograph tells a unique story. Explore the world through my lens.
+                        Welcome to my portfolio, where every piece tells a unique story. Explore a world where style, art, and imagery converge.
                     </p>
-                    <a href="#gallery" data-page="gallery" class="nav-link bg-white bg-opacity-20 text-white px-8 py-3 rounded-full font-bold shadow-lg backdrop-blur-md hover:bg-opacity-30 transition-all">
-                        View Gallery
+                    <a href="#media" data-page="media" class="nav-link bg-white bg-opacity-20 text-white px-8 py-3 rounded-full font-bold shadow-lg backdrop-blur-md hover:bg-opacity-30 transition-all">
+                        View Media
                     </a>
                 </div>
             </div>
         </section>
-
+        
         <!-- Illustration Page Section -->
         <section id="illustration-page" class="page-section hidden">
-            <h2 class="text-3xl md:text-5xl font-bold text-center mb-12 text-gray-100">My Work</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                <!-- illustration Item 1 -->
-                <div class="rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
-                    <img src="https://placehold.co/600x400/1f2937/d1d5db?text=Nature" alt="Nature photography" class="w-full h-48 object-cover">
-                    <div class="p-4 bg-gray-800">
-                        <h3 class="font-semibold text-lg text-gray-100">Nature</h3>
-                        <p class="text-gray-400 text-sm">A collection of beautiful landscapes.</p>
-                    </div>
+            <h2 class="text-3xl md:text-5xl font-bold text-center mb-12 text-gray-100">Illustration</h2>
+            <!-- You can use the same masonry grid style for the recent work page -->
+            <div class="gallery-grid">
+                <!-- Placeholder for a recent illustration -->
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                    <img src="https://placehold.co/800x600/2a9d8f/ffffff?text=Illustration+1" alt="Placeholder image for an illustration" class="w-full">
                 </div>
-                <!-- illustration Item 2 -->
-                <div class="rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
-                    <img src="https://placehold.co/600x400/1f2937/d1d5db?text=Portraits" alt="Portrait photography" class="w-full h-48 object-cover">
-                    <div class="p-4 bg-gray-800">
-                        <h3 class="font-semibold text-lg text-gray-100">Portraits</h3>
-                        <p class="text-gray-400 text-sm">Capturing the essence of people.</p>
-                    </div>
+                <!-- Placeholder for a recent illustration -->
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                    <img src="https://placehold.co/800x600/2a9d8f/ffffff?text=Illustration+2" alt="Placeholder image for an illustration" class="w-full">
                 </div>
-                <!-- Gallery Item 3 -->
-                <div class="rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
-                    <img src="https://placehold.co/600x400/1f2937/d1d5db?text=Urban" alt="Urban photography" class="w-full h-48 object-cover">
-                    <div class="p-4 bg-gray-800">
-                        <h3 class="font-semibold text-lg text-gray-100">Urban</h3>
-                        <p class="text-gray-400 text-sm">The pulse of the city.</p>
-                    </div>
+                <!-- Placeholder for a recent illustration -->
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                    <img src="https://placehold.co/800x600/2a9d8f/ffffff?text=Illustration+3" alt="Placeholder image for an illustration" class="w-full">
                 </div>
-                <!-- Gallery Item 4 -->
-                <div class="rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
-                    <img src="https://placehold.co/600x400/1f2937/d1d5db?text=Wildlife" alt="Wildlife photography" class="w-full h-48 object-cover">
-                    <div class="p-4 bg-gray-800">
-                        <h3 class="font-semibold text-lg text-gray-100">Wildlife</h3>
-                        <p class="text-gray-400 text-sm">Unseen moments in nature.</p>
-                    </div>
+                <!-- Placeholder for a recent illustration -->
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                    <img src="https://placehold.co/800x600/2a9d8f/ffffff?text=Illustration+4" alt="Placeholder image for an illustration" class="w-full">
                 </div>
-                <!-- More gallery items can be added here -->
+                <!-- Placeholder for a recent illustration -->
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                    <img src="https://placehold.co/800x600/2a9d8f/ffffff?text=Illustration+5" alt="Placeholder image for an illustration" class="w-full">
+                </div>
+            </div>
+        </section>
+
+        <!-- Media Page Section -->
+        <section id="media-page" class="page-section hidden">
+            <h2 class="text-3xl md:text-5xl font-bold text-center mb-12 text-gray-100">Media</h2>
+            <!-- Updated to use a masonry-style grid for better handling of different aspect ratios -->
+            <div class="gallery-grid">
+                <!-- Gallery Item 1 (Placeholder) -->
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                    <img src="https://placehold.co/800x600/1f2937/d1d5db?text=Media+1" alt="Placeholder for a media piece" class="w-full">
+                </div>
+                <!-- Gallery Item 2 (Placeholder) -->
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                    <img src="https://placehold.co/800x600/1f2937/d1d5db?text=Media+2" alt="Placeholder for a media piece" class="w-full">
+                </div>
+                <!-- Gallery Item 3 (Placeholder) -->
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                    <img src="https://placehold.co/800x600/1f2937/d1d5db?text=Media+3" alt="Placeholder for a media piece" class="w-full">
+                </div>
+                <!-- Gallery Item 4 (Placeholder) -->
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                    <img src="https://placehold.co/800x600/1f2937/d1d5db?text=Media+4" alt="Placeholder for a media piece" class="w-full">
+                </div>
+                <!-- Gallery Item 5 (Placeholder) -->
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                    <img src="https://placehold.co/800x600/1f2937/d1d5db?text=Media+5" alt="Placeholder for a media piece" class="w-full">
+                </div>
             </div>
         </section>
 
         <!-- About Page Section -->
-        <section id="media-page" class="page-section hidden">
+        <section id="about-page" class="page-section hidden">
             <div class="flex flex-col lg:flex-row items-center justify-center space-y-8 lg:space-y-0 lg:space-x-12">
                 <div class="w-full lg:w-1/3">
                     <img src="https://placehold.co/400x400/1f2937/d1d5db?text=Your+Photo" alt="Photo of the photographer" class="rounded-full shadow-xl w-64 h-64 mx-auto lg:mx-0">
@@ -122,10 +180,11 @@
                 <div class="w-full lg:w-2/3 text-center lg:text-left">
                     <h2 class="text-3xl md:text-5xl font-bold mb-4 text-gray-100">About Me</h2>
                     <p class="text-lg text-gray-300 leading-relaxed mb-6">
-                        Hello! My name is Alex and I'm a passionate photographer based in the city. My journey began with a simple camera and a desire to capture the world's beauty, one frame at a time. I specialize in a variety of styles, from the serene landscapes of the countryside to the dynamic energy of urban street life.
-                    </p>
+I am passionate, creatives and believe success occurs at the intersection of talent, hard work, and humility. I believe if we embrace new challenges, humbly seek out learning opportunities, and continue to grow in your personal and professional lives.
+
+“The best things in life are on the other side of fear.” – Will Smith                    </p>
                     <p class="text-lg text-gray-300 leading-relaxed">
-                        I believe that a photograph is more than just an image; it's a memory, a feeling, and a story waiting to be told. I'm dedicated to creating work that resonates with people and inspires a new perspective. Thank you for visiting and I hope you enjoy my portfolio!
+                        I believe that every piece of art is more than just an image; it's a memory, a feeling, and a story waiting to be told. I'm dedicated to creating work that resonates with people and inspires a new perspective. Thank you for visiting and I hope you enjoy my portfolio!
                     </p>
                 </div>
             </div>
@@ -138,7 +197,8 @@
                 <p class="text-gray-300 text-center mb-6">
                     Feel free to reach out with any questions or collaboration ideas.
                 </p>
-                <form action="#" method="POST">
+                <!-- Form element, modified for JavaScript handling -->
+                <form id="contact-form">
                     <div class="mb-4">
                         <label for="name" class="block text-gray-300 font-medium mb-2">Name</label>
                         <input type="text" id="name" name="name" class="w-full bg-gray-700 text-gray-100 border border-gray-600 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-gray-500">
@@ -155,6 +215,17 @@
                         Send Message
                     </button>
                 </form>
+                
+                <!-- Added a section for direct contact information -->
+                <div class="mt-8 text-center border-t border-gray-700 pt-6">
+                    <p class="text-gray-300 mb-2 font-semibold">Or contact me directly:</p>
+                    <a href="tel:954-834-3611" class="text-blue-400 hover:underline transition-all block mb-2">
+                        Phone: 954-834-3611
+                    </a>
+                    <a href="mailto:Denis@deniswilliams.com" class="text-blue-400 hover:underline transition-all block">
+                        Email: Denis@deniswilliams.com
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -165,11 +236,12 @@
         <p>&copy; 2025 Luminous Frames. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript for Page Navigation -->
+    <!-- JavaScript for Page Navigation and Contact Form -->
     <script>
         // Get all navigation links and page sections
         const navLinks = document.querySelectorAll('.nav-link');
         const pages = document.querySelectorAll('.page-section');
+        const contactForm = document.getElementById('contact-form');
 
         // Function to show a specific page
         function showPage(pageId) {
@@ -204,6 +276,25 @@
                 // Show the corresponding page
                 showPage(pageId);
             });
+        });
+
+        // Add a submit event listener to the contact form
+        contactForm.addEventListener('submit', (event) => {
+                // Prevent the default form submission that causes a page reload
+                event.preventDefault();
+
+                // Create and show a simple confirmation message box
+                const messageBox = document.createElement('div');
+                messageBox.className = 'message-box';
+                messageBox.innerHTML = `
+                    <p class="text-xl text-white font-bold mb-4">Message Sent!</p>
+                    <p class="text-gray-300 mb-6">Thank you for your message. I'll get back to you shortly.</p>
+                    <button onclick="this.parentNode.remove()" class="bg-gray-700 text-white px-6 py-2 rounded-full font-bold hover:bg-gray-600">Close</button>
+                `;
+                document.body.appendChild(messageBox);
+                
+                // Clear the form fields after showing the message
+                contactForm.reset();
         });
 
         // Show the initial page based on the URL hash or default to home
