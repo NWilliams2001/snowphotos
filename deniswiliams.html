@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photography Portfolio</title>
+    <!-- Use Tailwind CSS for a sleek and modern design -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Use the 'Inter' font for a clean, modern look */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Basic transition for smoother hover effects */
+        .transition-all {
+            transition-property: all;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
+
+        /* Style for the navigation links to add visual feedback */
+        .nav-link.active {
+            color: #d1d5db; /* A lighter gray for the active link */
+            border-bottom: 2px solid #d1d5db;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <!-- Header & Navigation Bar -->
+    <header class="bg-gray-950 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex flex-col sm:flex-row justify-between items-center">
+            <!-- Site Title/Logo -->
+            <a href="#" class="text-xl md:text-2xl font-bold text-gray-100 mb-4 sm:mb-0">
+                Luminous Frames
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="flex space-x-4 md:space-x-8">
+                <a href="#home" data-page="home" class="nav-link transition-all font-medium text-gray-400 hover:text-gray-100 pb-1 border-b-2 border-transparent">Home</a>
+                <a href="#gallery" data-page="gallery" class="nav-link transition-all font-medium text-gray-400 hover:text-gray-100 pb-1 border-b-2 border-transparent">Gallery</a>
+                <a href="#about" data-page="about" class="nav-link transition-all font-medium text-gray-400 hover:text-gray-100 pb-1 border-b-2 border-transparent">About</a>
+                <a href="#contact" data-page="contact" class="nav-link transition-all font-medium text-gray-400 hover:text-gray-100 pb-1 border-b-2 border-transparent">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 min-h-screen">
+
+        <!-- Home Page Section - Updated to be a full-screen image with text overlay -->
+        <section id="home-page" class="page-section">
+            <!-- Container with relative positioning for the image and text overlay -->
+            <div class="relative min-h-[calc(100vh-16rem)] flex items-center justify-center">
+                <!-- Background Image, positioned to cover the container -->
+                <img src="https://placehold.co/1920x1080/1f2937/d1d5db?text=Your+Epic+Hero+Image" alt="An epic hero image for the home page" class="absolute inset-0 w-full h-full object-cover">
+                
+                <!-- Dark gradient overlay to improve text readability -->
+                <div class="absolute inset-0 bg-gray-900 opacity-60"></div>
+                
+                <!-- Text and Button Overlay, centered and on top of the image -->
+                <div class="relative z-10 text-center p-8">
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4 drop-shadow-lg">
+                        Capturing Moments. <br>Crafting Stories.
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-200 max-w-xl mx-auto mb-8 drop-shadow-md">
+                        Welcome to my portfolio, where every photograph tells a unique story. Explore the world through my lens.
+                    </p>
+                    <a href="#gallery" data-page="gallery" class="nav-link bg-white bg-opacity-20 text-white px-8 py-3 rounded-full font-bold shadow-lg backdrop-blur-md hover:bg-opacity-30 transition-all">
+                        View Gallery
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Page Section -->
+        <section id="gallery-page" class="page-section hidden">
+            <h2 class="text-3xl md:text-5xl font-bold text-center mb-12 text-gray-100">My Work</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Gallery Item 1 -->
+                <div class="rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                    <img src="https://placehold.co/600x400/1f2937/d1d5db?text=Nature" alt="Nature photography" class="w-full h-48 object-cover">
+                    <div class="p-4 bg-gray-800">
+                        <h3 class="font-semibold text-lg text-gray-100">Nature</h3>
+                        <p class="text-gray-400 text-sm">A collection of beautiful landscapes.</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 2 -->
+                <div class="rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                    <img src="https://placehold.co/600x400/1f2937/d1d5db?text=Portraits" alt="Portrait photography" class="w-full h-48 object-cover">
+                    <div class="p-4 bg-gray-800">
+                        <h3 class="font-semibold text-lg text-gray-100">Portraits</h3>
+                        <p class="text-gray-400 text-sm">Capturing the essence of people.</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 3 -->
+                <div class="rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                    <img src="https://placehold.co/600x400/1f2937/d1d5db?text=Urban" alt="Urban photography" class="w-full h-48 object-cover">
+                    <div class="p-4 bg-gray-800">
+                        <h3 class="font-semibold text-lg text-gray-100">Urban</h3>
+                        <p class="text-gray-400 text-sm">The pulse of the city.</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 4 -->
+                <div class="rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                    <img src="https://placehold.co/600x400/1f2937/d1d5db?text=Wildlife" alt="Wildlife photography" class="w-full h-48 object-cover">
+                    <div class="p-4 bg-gray-800">
+                        <h3 class="font-semibold text-lg text-gray-100">Wildlife</h3>
+                        <p class="text-gray-400 text-sm">Unseen moments in nature.</p>
+                    </div>
+                </div>
+                <!-- More gallery items can be added here -->
+            </div>
+        </section>
+
+        <!-- About Page Section -->
+        <section id="about-page" class="page-section hidden">
+            <div class="flex flex-col lg:flex-row items-center justify-center space-y-8 lg:space-y-0 lg:space-x-12">
+                <div class="w-full lg:w-1/3">
+                    <img src="https://placehold.co/400x400/1f2937/d1d5db?text=Your+Photo" alt="Photo of the photographer" class="rounded-full shadow-xl w-64 h-64 mx-auto lg:mx-0">
+                </div>
+                <div class="w-full lg:w-2/3 text-center lg:text-left">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-4 text-gray-100">About Me</h2>
+                    <p class="text-lg text-gray-300 leading-relaxed mb-6">
+                        Hello! My name is Alex and I'm a passionate photographer based in the city. My journey began with a simple camera and a desire to capture the world's beauty, one frame at a time. I specialize in a variety of styles, from the serene landscapes of the countryside to the dynamic energy of urban street life.
+                    </p>
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        I believe that a photograph is more than just an image; it's a memory, a feeling, and a story waiting to be told. I'm dedicated to creating work that resonates with people and inspires a new perspective. Thank you for visiting and I hope you enjoy my portfolio!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Page Section -->
+        <section id="contact-page" class="page-section hidden">
+            <h2 class="text-3xl md:text-5xl font-bold text-center mb-12 text-gray-100">Get In Touch</h2>
+            <div class="max-w-xl mx-auto bg-gray-800 p-8 rounded-2xl shadow-xl">
+                <p class="text-gray-300 text-center mb-6">
+                    Feel free to reach out with any questions or collaboration ideas.
+                </p>
+                <form action="#" method="POST">
+                    <div class="mb-4">
+                        <label for="name" class="block text-gray-300 font-medium mb-2">Name</label>
+                        <input type="text" id="name" name="name" class="w-full bg-gray-700 text-gray-100 border border-gray-600 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-300 font-medium mb-2">Email</label>
+                        <input type="email" id="email" name="email" class="w-full bg-gray-700 text-gray-100 border border-gray-600 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block text-gray-300 font-medium mb-2">Message</label>
+                        <textarea id="message" name="message" rows="5" class="w-full bg-gray-700 text-gray-100 border border-gray-600 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-gray-500"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-gray-700 text-gray-100 py-3 rounded-full font-bold shadow-md hover:bg-gray-600 transition-all">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 text-gray-500 text-center py-6 mt-12">
+        <p>&copy; 2025 Luminous Frames. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Page Navigation -->
+    <script>
+        // Get all navigation links and page sections
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page-section');
+
+        // Function to show a specific page
+        function showPage(pageId) {
+            // Hide all pages first
+            pages.forEach(page => {
+                page.classList.add('hidden');
+            });
+
+            // Show the requested page
+            const targetPage = document.getElementById(pageId + '-page');
+            if (targetPage) {
+                targetPage.classList.remove('hidden');
+            }
+
+            // Update active navigation link styling
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            const activeLink = document.querySelector(`[data-page="${pageId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+
+        // Set up click listeners for all navigation links
+        navLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                // Prevent the default link behavior
+                event.preventDefault();
+                // Get the page ID from the data-page attribute
+                const pageId = event.target.dataset.page;
+                // Show the corresponding page
+                showPage(pageId);
+            });
+        });
+
+        // Show the initial page based on the URL hash or default to home
+        const initialPage = window.location.hash.substring(1) || 'home';
+        showPage(initialPage);
+    </script>
+
+</body>
+</html>
+
